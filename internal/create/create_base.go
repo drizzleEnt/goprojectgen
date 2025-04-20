@@ -1,4 +1,4 @@
-package commands
+package create
 
 import (
 	"fmt"
@@ -30,12 +30,14 @@ func CreateBaseStruct(name string) {
 	}
 
 	mainFile := filepath.Join(name, "cmd", "main.go")
+	//os.ReadFile("./template/main.go.txt")
+
 	mainContent := `package main
 
 import "fmt"
 
 func main() {
-	fmt.Println("Hello from ` + name + `")
+	fmt.Println("Hello from %s")
 }		
 	`
 	if err := os.WriteFile(mainFile, []byte(mainContent), 0644); err != nil {

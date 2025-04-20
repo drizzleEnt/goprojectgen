@@ -1,19 +1,19 @@
-package root
+package sysstat
 
 import (
 	"fmt"
 	"log"
 	"os"
 
-	"github.com/drizzleent/goprojectgen/internal/root/commands"
+	"github.com/drizzleent/goprojectgen/internal/create"
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "prg",
-	Short: "golang project generation",
+	Use:   "sysstat",
+	Short: "machine statistic",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Привет! Используй `prg init <projectname>` чтобы создать проект.")
+		fmt.Println("Привет! Используй sysstat to show machine statistic.")
 	},
 }
 
@@ -26,7 +26,7 @@ var initCmd = &cobra.Command{
 			log.Printf("failed to read name flag: %s", err.Error())
 			os.Exit(1)
 		}
-		commands.CreateBaseStruct(name)
+		create.CreateBaseStruct(name)
 		fmt.Printf("created new project %s\n", name)
 	},
 }
